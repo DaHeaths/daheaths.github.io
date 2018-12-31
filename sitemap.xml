@@ -3,28 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://www.example.com/post/test/</loc>
+    <loc>http://blog.vovteam.com/post/test/</loc>
     <lastmod>2018-12-31T15:51:08+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.example.com/categories/</loc>
+    <loc>http://blog.vovteam.com/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.example.com/post/</loc>
+    <loc>http://blog.vovteam.com/post/</loc>
     <lastmod>2018-12-31T15:51:08+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.example.com/tags/</loc>
+    <loc>http://blog.vovteam.com/tags/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.example.com/</loc>
+    <loc>http://blog.vovteam.com/</loc>
     <lastmod>2018-12-31T15:51:08+08:00</lastmod>
     <priority>0</priority>
   </url>
