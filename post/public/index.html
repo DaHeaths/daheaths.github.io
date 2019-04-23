@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    
+
+    
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans:400|Old+Standard+TT:400' rel='stylesheet' type='text/css'>
+    
+
+    <link rel="icon" type="image/png" href="http://blog.vovteam.com/favicon_16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="http://blog.vovteam.com/favicon_32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="http://blog.vovteam.com/favicon_128x128.png" sizes="128x128">
+
+    <title>
+      
+      
+         CSS filter / CSS 滤镜 
+      
+    </title>
+    <link rel="canonical" href="http://blog.vovteam.com/post/public/">
+
+    <style>
+  * {
+    border:0;
+    font:inherit;
+    font-size:100%;
+    vertical-align:baseline;
+    margin:0;
+    padding:0;
+    color: black;
+    text-decoration-skip: ink;
+  }
+
+  body {
+    font-family:'Open Sans', 'Myriad Pro', Myriad, sans-serif;
+    font-size:17px;
+    line-height:160%;
+    color:#1d1313;
+    max-width:700px;
+    margin:auto;
+  }
+
+  p {
+    margin: 20px 0;
+  }
+
+  a img {
+    border:none;
+  }
+
+  img {
+    margin: 10px auto 10px auto;
+    max-width: 100%;
+    display: block;
+  }
+
+  .left-justify {
+    float: left;
+  }
+
+  .right-justify {
+    float:right;
+  }
+
+  pre, code {
+    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    background-color: #f7f7f7;
+  }
+
+  code {
+    font-size: 12px;
+    padding: 4px;
+  }
+
+  pre {
+    margin-top: 0;
+    margin-bottom: 16px;
+    word-wrap: normal;
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+  }
+
+  pre>code {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    word-break: normal;
+    white-space: pre;
+    background: transparent;
+    border: 0;
+  }
+
+  pre code {
+    display: inline;
+    max-width: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    line-height: inherit;
+    word-wrap: normal;
+    background-color: transparent;
+    border: 0;
+  }
+
+  pre code::before,
+  pre code::after {
+    content: normal;
+  }
+
+  em,q,em,dfn {
+    font-style:italic;
+  }
+
+  .sans,html .gist .gist-file .gist-meta {
+    font-family:"Open Sans","Myriad Pro",Myriad,sans-serif;
+  }
+
+  .mono,pre,code,tt,p code,li code {
+    font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace;
+  }
+
+  .heading,.serif,h1,h2,h3 {
+    font-family:"Old Standard TT",serif;
+  }
+
+  strong {
+    font-weight:600;
+  }
+
+  q:before {
+    content:"\201C";
+  }
+
+  q:after {
+    content:"\201D";
+  }
+
+  del,s {
+    text-decoration:line-through;
+  }
+
+  blockquote {
+    font-family:"Old Standard TT",serif;
+    text-align:center;
+    padding:50px;
+  }
+
+  blockquote p {
+    display:inline-block;
+    font-style:italic;
+  }
+
+  blockquote:before,blockquote:after {
+    font-family:"Old Standard TT",serif;
+    content:'\201C';
+    font-size:35px;
+    color:#403c3b;
+  }
+
+  blockquote:after {
+    content:'\201D';
+  }
+
+  hr {
+    width:40%;
+    height: 1px;
+    background:#403c3b;
+    margin: 25px auto;
+  }
+
+  h1 {
+    font-size:35px;
+  }
+
+  h2 {
+    font-size:28px;
+  }
+
+  h3 {
+    font-size:22px;
+    margin-top:18px;
+  }
+
+  h1 a,h2 a,h3 a {
+    text-decoration:none;
+  }
+
+  h1,h2 {
+    margin-top:28px;
+  }
+
+  #sub-header, time {
+    color:#403c3b;
+    font-size:13px;
+  }
+
+  #sub-header {
+    margin: 0 4px;
+  }
+
+  #nav h1 a {
+    font-size:35px;
+    color:#1d1313;
+    line-height:120%;
+  }
+
+  .posts_listing a,#nav a {
+    text-decoration: none;
+  }
+
+  li {
+    margin-left: 20px;
+  }
+
+  ul li {
+    margin-left: 5px;
+  }
+
+  ul li {
+    list-style-type: none;
+  }
+  ul li:before {
+    content:"\00BB \0020";
+  }
+
+  #nav ul li:before, .posts_listing li:before {
+    content:'';
+    margin-right:0;
+  }
+
+  #content {
+    text-align:left;
+    width:100%;
+    font-size:15px;
+    padding:60px 0 80px;
+  }
+
+  #content h1,#content h2 {
+    margin-bottom:5px;
+  }
+
+  #content h2 {
+    font-size:25px;
+  }
+
+  #content .entry-content {
+    margin-top:15px;
+  }
+
+  #content time {
+    margin-left:3px;
+  }
+
+  #content h1 {
+    font-size:30px;
+  }
+
+  .highlight {
+    margin: 10px 0;
+  }
+
+  .posts_listing {
+    margin:0 0 50px;
+  }
+
+  .posts_listing li {
+    margin:0 0 25px 15px;
+  }
+
+  .posts_listing li a:hover,#nav a:hover {
+    text-decoration: underline;
+  }
+
+  #nav {
+    text-align:center;
+    position:static;
+    margin-top:60px;
+  }
+
+  #nav ul {
+    display: table;
+    margin: 8px auto 0 auto;
+  }
+
+  #nav li {
+    list-style-type:none;
+    display:table-cell;
+    font-size:15px;
+    padding: 0 20px;
+  }
+
+  #links {
+    margin: 50px 0 0 0;
+  }
+
+  #links :nth-child(2) {
+    float:right;
+  }
+
+  #not-found {
+    text-align: center;
+  }
+
+  #not-found a {
+    font-family:"Old Standard TT",serif;
+    font-size: 200px;
+    text-decoration: none;
+    display: inline-block;
+    padding-top: 225px;
+  }
+
+  @media (max-width: 750px) {
+    body {
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    #nav h1 a {
+      font-size:28px;
+    }
+
+    #nav li {
+      font-size:13px;
+      padding: 0 15px;
+    }
+
+    #content {
+      margin-top:0;
+      padding-top:50px;
+      font-size:14px;
+    }
+
+    #content h1 {
+      font-size:25px;
+    }
+
+    #content h2 {
+      font-size:22px;
+    }
+
+    .posts_listing li div {
+      font-size:12px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    body {
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    #nav h1 a {
+      font-size:22px;
+    }
+
+    #nav li {
+      font-size:12px;
+      padding: 0 10px;
+    }
+
+    #content {
+      margin-top:0;
+      padding-top:20px;
+      font-size:12px;
+    }
+
+    #content h1 {
+      font-size:20px;
+    }
+
+    #content h2 {
+      font-size:18px;
+    }
+
+    .posts_listing li div{
+      font-size:12px;
+    }
+  }
+</style>
+
+
+    
+  </head>
+
+  <body>
+    <section id=nav>
+      <h1><a href="http://blog.vovteam.com/">愤怒的牛仔</a></h1>
+      <ul>
+        
+          <li><a href="#ZgotmplZ">不念过去，不畏将来</a></li>
+        
+      </ul>
+    </section>
+
+
+<section id=content>
+  <h1> CSS filter / CSS 滤镜 </h1>
+
+  
+
+  <div class="entry-content">
+    
+
+<h4 id="css-filter">CSS filter</h4>
+
+<ul>
+<li>先通过1个案例开始
+<img src="http://vovteam.com/css-filter.png" alt="express" /></li>
+</ul>
+
+<p>如上图效果， 新闻资讯网站。 例如: “国家公祭日” 会用到这种效果。（上图如有侵权，请联系作者）</p>
+
+<blockquote>
+<p>css filter 就像是浏览器版本的 Photoshop 滤镜！</p>
+</blockquote>
+
+<p><strong>注意： filter 跟 IE上的 filter 是不同的作用！</strong></p>
+
+<ul>
+<li>有以下属性</li>
+</ul>
+
+<pre><code>blur()
+brightness()
+contrast()
+drop-shadow()
+grayscale()
+hue-rotate()
+invert()
+opacity()
+saturate()
+sepia()
+url() - for applying SVG filters
+custom() - 即将推出
+</code></pre>
+
+<h5 id="编辑-html">编辑 HTML</h5>
+
+<pre><code>  &lt;div class=&quot;box&quot;&gt;
+    &lt;img src=&quot;http://vovteam.com/background/background.jpg&quot; alt=&quot;express&quot;&gt;
+  &lt;/div&gt; 
+</code></pre>
+
+<h3 id="filter-blur"><strong>filter: blur()</strong></h3>
+
+<p><strong>blur() 将图像设置为高斯模糊, 默认值：0, 不可将值设置为 “百分比”</strong></p>
+
+<pre><code>.box {
+    width: 600px;
+    height: 00px;
+}
+img {
+    width: 100%;
+    height: 100%;
+    filter: blur(2px);     
+}
+</code></pre>
+
+<p><img src="http://vovteam.com/css-filter-blur.png" alt="blur" /></p>
+
+<h3 id="filter-brightness"><strong>filter: brightness()</strong></h3>
+
+<p><strong>应用线性乘法器，使图像看起来更光亮或者更暗淡。值为 0%，图像是全黑。值为 100%，图像无变化。值超过100%, 图像的亮度更高。如果没有设定值，则默认为 100%</strong></p>
+
+<pre><code>.box {
+    width: 600px;
+    height: 400px;
+}
+
+img {
+    width: 100%;
+    height: 100%; 
+    filter: brightness(50%);    
+}
+</code></pre>
+
+<p><img src="http://vovteam.com/css-filter-brightness.png" alt="brightness" /></p>
+
+<h3 id="filter-contrast"><strong>filter: contrast()</strong></h3>
+
+<p><strong>调整图像的对比度，值为 0%，图像将为完全黑色的图像。值为 100%，则图像保持不变。值超过100%时，会使图像的对比度比较低。如果缺少参数，则默认值为 100%</strong></p>
+
+<pre><code>.box {
+    width: 600px;
+    height: 400px;
+}
+img {
+    width: 100%;
+    height: 100%;
+    filter: contrast(180%)
+}
+</code></pre>
+
+<p><img src="http://vovteam.com/css-filter-contrast.png" alt="contrast" /></p>
+
+<h3 id="filter-drop-shadow"><strong>filter:  drop-shadow()</strong></h3>
+
+<p><strong>将阴影效果应用在图像上，投影实际上是将特定的颜色绘制输出到图像蒙版的模糊偏移版本。但不允许使用&rsquo;inset&rsquo;关键字</strong></p>
+
+<p>此属性类似于 [“box-shadow”]() 属性, 在有些浏览器品牌提供了硬件加速，box-shadow 可获得更好的性能优势。</p>
+
+<h5 id="参数"><em>参数：</em></h5>
+
+<p>&lt;offset-x&gt;&lt;offset-y&gt; 设置阴影偏移量，offset-x 设定水平方向，offset-y 设定垂直方向。如果两个参数为 0，则设定在元素正后面</p>
+
+<p>&lt;blur-radius&gt; (可选)
+这是第三个 <length>值. 值越大，越模糊，则阴影会变得更大更淡.不允许负值 若未设定，默认是0 (则阴影的边界很锐利).</p>
+
+<p>&lt;spread-radius&gt; (可选)
+默认值 0，负值阴影缩小，正值阴影扩大。
+注意: Webkit, 以及一些其他浏览器 不支持第四个长度，如果加了也不会渲染。</p>
+
+<p><color> (可选)
+设定的颜色值</p>
+
+<pre><code>.box {
+    width: 600px;
+    height: 400px;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(10px 10px 10px red);    
+}
+</code></pre>
+
+<p><img src="http://vovteam.com/css-filter-drop-shadow.png" alt="drop-shadow" /></p>
+
+<hr />
+
+<h3 id="drop-shadow-与-box-shadow-的区别"><strong>drop-shadow 与 box-shadow 的区别</strong></h3>
+
+<p><strong>drop-shadow 将DOM元素轮廓自然渲染出阴影，而box-shadow只是将DOM元素其路径再渲染阴影</strong></p>
+
+<pre><code>main {
+    width: 500px;
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.box {
+    width: 200px;
+    height: 200px;
+    border-radius: 50px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.drop-shadow {
+    filter: drop-shadow(0px 0px 10px rgba(0,0,0,.5));
+}
+
+.box-shadow {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5)
+}
+</code></pre>
+
+<pre><code>&lt;main&gt;
+    &lt;div class=&quot;box drop-shadow&quot;&gt;
+        &lt;span&gt;filter: drop-shadow&lt;/span&gt; 
+    &lt;/div&gt;
+    &lt;div class=&quot;box box-shadow&quot;&gt;
+        &lt;span&gt;box-shadow&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/main&gt;
+</code></pre>
+
+<p><img src="http://vovteam.com/drop-shadow-box-shadow.png" alt="drop-shadow-box-shadow" /></p>
+
+<hr />
+
+<h3 id="drop-shadow-更改-png-图标的颜色"><strong>drop-shadow 更改 png `图标的颜色</strong></h3>
+
+<pre><code>.box {
+    width: 40px;
+    height: 40px;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-right: 40px solid transparent;
+    filter: drop-shadow(40px 0px 0px rgba(226, 11, 11, 0.5));
+}
+</code></pre>
+
+<pre><code>&lt;div class=&quot;box&quot;&gt;
+    &lt;img src=&quot;data:image/png;base64,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&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p><img src="http://vovteam.com/drop-shadow-png.png" alt="drop-shadow-png" /></p>
+
+<h3 id="filter-grayscale"><strong>filter: grayscale()</strong></h3>
+
+<p>设置图像的灰度，值为 0% ~ 100% 之间。如果为设置值，则值默认 0</p>
+
+<pre><code>.box {
+    width: 600px;
+    height: 400px;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(100%);
+}
+</code></pre>
+
+<p><img src="http://vovteam.com/css-filter-grayscale.png" alt="grayscale" /></p>
+
+<blockquote>
+<p>在帖子开头就是展示这种效果</p>
+</blockquote>
+
+<h3 id="filter-hue-rotate"><strong>filter: hue-rotate()</strong></h3>
+
+<p><strong>应用色调旋转，调整图像样本的色环角度数。如果缺少参数，则默认值为 0 deg, 最大值为 360 deg</strong></p>
+
+<pre><code>.box {
+    width: 600px;
+    height: 400px;
+}
+img {
+    width: 100%;
+    height: 100%;
+    filter: hue-rotate(100deg)    
+}
+</code></pre>
+
+<p><img src="http://vovteam.com/css-filter-hue-rotate.png" alt="hue-rotate" /></p>
+
+<h3 id="filter-invert"><strong>filter: invert()</strong></h3>
+
+<p><strong>反转图像，参数值定义了转换比例。值为100%则完全反转，值为0%则保持不变。 0% ~ 100% 之间的值会以线性乘数。如果缺少参数，默认值 100%。（负数值无效）</strong></p>
+
+<pre><code>.box {
+    width: 600px;
+    height: 400px;
+}
+img {
+    width: 100%;
+    height: 100%;
+    filter: invert(100%)    
+}
+</code></pre>
+
+<p><img src="http://vovteam.com/css-filter-invert.png" alt="invert" /></p>
+
+<h3 id="filter-opacity"><strong>filter: opacity()</strong></h3>
+
+<p><strong>图像的透明度，值为 0% ~ 100% 之间效果是以线性乘数（值也可为0 ~ 1）。如果缺少参数，则使用100%。此属性类似于更成熟的不透明度属性，区别在于使用过滤器，有些浏览器能提供更好渲染的性能。（使用负值无效）</strong></p>
+
+<pre><code>.box {
+    width: 600px;
+    height: 400px;
+}
+img {
+    width: 100%;
+    height: 100%;
+    filter: opacity(.2);
+    -webkit-filter: opacity(20%); 
+}
+</code></pre>
+
+<p><img src="http://vovteam.com/css-filter-opacity.png" alt="opacity" /></p>
+
+<h3 id="saturate"><strong>saturate()</strong></h3>
+
+<p><strong>转换图像的饱和度，。值为 0% 则完全不饱和，值为 100% 使其保持不变。值允许超过 100%。如果缺少参数，则默认值 100%</strong></p>
+
+<pre><code>.box {
+    width: 600px;
+    height: 400px;
+}
+img {
+    width: 100%;
+    height: 100%;
+    filter: saturate(20%);
+    -webkit-filter: saturate(20%); 
+}
+</code></pre>
+
+<p><img src="http://vovteam.com/css-filter-saturate.png" alt="saturate" /></p>
+
+<h3 id="filter-sepia"><strong>filter: sepia()</strong></h3>
+
+<p><strong>将图像转为深褐色，值为 100% 则完全是深褐色，值为 0% 则保持不变。0% ~ 100% 效果以线性乘数渲染。如果缺少参数，默认值 0</strong></p>
+
+<pre><code>.box {
+    width: 600px;
+    height: 400px;
+}
+img {
+    width: 100%;
+    height: 100%;
+    filter: sepia(50%);
+    -webkit-filter: sepia(50%); 
+}
+</code></pre>
+
+<p><img src="http://vovteam.com/css-filter-sepia.png" alt="sepia" /></p>
+
+<h3 id="filter-url"><strong>filter: url()</strong></h3>
+
+<p><strong>该url()函数获取指定SVG滤镜的XML文件的位置，并且可以包括到特定过滤器元素的锚。</strong></p>
+
+<pre><code>.box {
+    width: 600px;
+    height: 400px;
+}
+img {
+    width: 100%;
+    height: 100%;
+    filter: url(#goo);
+}
+</code></pre>
+
+<p>因为 svg 滤镜涉及 feColorMatrix 矩阵计算，帖子也足够消化，就不长篇&hellip;&hellip;</p>
+
+<h3 id="浏览器兼容性"><strong>浏览器兼容性</strong></h3>
+
+<p><a href="https://caniuse.com/#feat=css-filters">https://caniuse.com/#feat=css-filters</a></p>
+
+<h3 id="文献参考"><strong>文献参考</strong></h3>
+
+<p>MDN <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter">https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter</a></p>
+
+  </div>
+
+  <div id=links>
+    
+    
+      <a class="basic-alignment left" href="http://blog.vovteam.com/post/test/">2019 &raquo;</a>
+    
+  </div>
+</section>
+
+  
+</body>
+</html>
+
+
+

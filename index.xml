@@ -20,5 +20,18 @@
       <description> 新年快乐 </description>
     </item>
     
+    <item>
+      <title>CSS filter / CSS 滤镜</title>
+      <link>http://blog.vovteam.com/post/public/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.vovteam.com/post/public/</guid>
+      <description>CSS filter  先通过1个案例开始   如上图效果， 新闻资讯网站。 例如: “国家公祭日” 会用到这种效果。（上图如有侵权，请联系作者）
+ css filter 就像是浏览器版本的 Photoshop 滤镜！
+ 注意： filter 跟 IE上的 filter 是不同的作用！
+ 有以下属性  blur() brightness() contrast() drop-shadow() grayscale() hue-rotate() invert() opacity() saturate() sepia() url() - for applying SVG filters custom() - 即将推出  编辑 HTML  &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt; &amp;lt;img src=&amp;quot;http://vovteam.com/background/background.jpg&amp;quot; alt=&amp;quot;express&amp;quot;&amp;gt; &amp;lt;/div&amp;gt;  filter: blur() blur() 将图像设置为高斯模糊, 默认值：0, 不可将值设置为 “百分比”
+.box { width: 600px; height: 00px; } img { width: 100%; height: 100%; filter: blur(2px); }  filter: brightness() 应用线性乘法器，使图像看起来更光亮或者更暗淡。值为 0%，图像是全黑。值为 100%，图像无变化。值超过100%, 图像的亮度更高。如果没有设定值，则默认为 100%</description>
+    </item>
+    
   </channel>
 </rss>

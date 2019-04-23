@@ -8,6 +8,10 @@
   </url>
   
   <url>
+    <loc>http://blog.vovteam.com/post/public/</loc>
+  </url>
+  
+  <url>
     <loc>http://blog.vovteam.com/categories/</loc>
     <priority>0</priority>
   </url>
