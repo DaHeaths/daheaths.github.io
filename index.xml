@@ -1,36 +1,53 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>愤怒的牛仔</title>
-    <link>http://blog.vovteam.com/</link>
+    <link>http://daheaths.github.io/</link>
     <description>Recent content on 愤怒的牛仔</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 31 Dec 2018 15:51:08 +0800</lastBuildDate>
     
-	<atom:link href="http://blog.vovteam.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://daheaths.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>动态划线效果</title>
+      <link>http://daheaths.github.io/animated-highlight/</link>
+      <pubDate>Mon, 03 Aug 2020 12:52:52 +0800</pubDate>
+      
+      <guid>http://daheaths.github.io/animated-highlight/</guid>
+      <description>html &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1.0&amp;#34;&amp;gt; &amp;lt;title&amp;gt;动态划线效果&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1&amp;gt;JavaScript 简史&amp;lt;/h1&amp;gt; &amp;lt;p&amp;gt; JavaScript诞生于&amp;lt;mark&amp;gt;1995年&amp;lt;/mark&amp;gt;。当时，它的主要目的是处理以前由服务器端语言 （如Perl）负责的一些输入验证操作。在JavaScript问世之前， 必须把表单数据发送到服务器端才能确定用户是否没有填写某个必填域， 是否输入了无效的值。&amp;lt;mark&amp;gt;Netscape Navigator&amp;lt;/mark&amp;gt;希望通过JavaScript来解决这个问题。 在人们普遍使用电话拔号上网的年代，能够在客户端完成一些基本的验证任务绝对是令人兴奋的。 毕竟，拨号上网的速度之慢，导致了与服务器的每一次数据交换事实上都成了对人们耐心的一次考验。 自此以后，JavaScript逐渐成为市面上常见浏览器必备的一项特色功能。 如今，JavaScript的用途早已不再局限于简单的数据验证， 而是具备了与浏览器窗口及其内容等几乎所有方面交互的能力。 今天的JavaScript已经成为一门功能全面的编程语言，能够处理复杂的计算和交互， &amp;lt;mark&amp;gt;拥有了闭包、匿名（lambda，拉姆达）函数，甚至元编程等特性。作为Web的一个重要组成部分&amp;lt;/mark&amp;gt;。 &amp;lt;/p&amp;gt; &amp;lt;p&amp;gt; JavaScript的重要性是不言而喻的，就连手机浏览器，甚至那些专为残障人士设计的浏览器等非常规浏览器都支持它。 当然，微软的例子更为典型。虽然有自己的客户端脚本语言&amp;lt;mark&amp;gt;VBScript&amp;lt;/mark&amp;gt;， 但微软仍然在&amp;lt;mark&amp;gt;InternetExplorer&amp;lt;/mark&amp;gt;的早期版本中加入了自己的JavaScript实现。 &amp;lt;/p&amp;gt; &amp;lt;p&amp;gt; JavaScript&amp;lt;mark&amp;gt;从一个简单的输入验证器发展成为一门强大的编程语言， 完全出乎人们的意料。&amp;lt;/mark&amp;gt;应该说，它既是一门非常简单的语 言，又是一门非常复杂的语言。说它简单，是因为学会使用它只需片刻功夫； 而说它复杂，是因为要真正掌握它则需要数年时间。 要想全面理解和掌握JavaScript，关键在于弄清楚它的本质、历史和局限性。 &amp;lt;/p&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; CSS &amp;lt;style&amp;gt; html { font-size: 12px; } body { font-family: Helvetica; color: #333; width: 60%; margin: auto; } h1 { font-size: 4rem; margin: 10rem 0 3rem 0; } p { font-size: 2rem; line-height: 3.</description>
+    </item>
+    
+    <item>
+      <title>判断策略</title>
+      <link>http://daheaths.github.io/2019-06-09-judge/</link>
+      <pubDate>Sun, 09 Jun 2019 20:00:01 +0800</pubDate>
+      
+      <guid>http://daheaths.github.io/2019-06-09-judge/</guid>
+      <description>if-else function checkStatus(status) { if (status === &amp;#39;start&amp;#39;) { console.log(&amp;#39;开始&amp;#39;) } else if (status === &amp;#39;loading&amp;#39;) { console.log(&amp;#39;加载中...&amp;#39;) } else if (status === &amp;#39;end&amp;#39;) { console.log(&amp;#39;结束&amp;#39;) } else { console.log(&amp;#39;网络异常&amp;#39;) } } switch function checkStatus(status) { switch(status) { case &amp;#39;start&amp;#39;: console.log(&amp;#39;开始&amp;#39;) break; case &amp;#39;loading&amp;#39;: console.log(&amp;#39;加载中...&amp;#39;) break; case &amp;#39;end&amp;#39;: console.log(&amp;#39;结束&amp;#39;) break; default: console.log(&amp;#39;网络异常&amp;#39;) } } Object 判断 let mode = { &amp;#39;start&amp;#39;: [&amp;#39;开始&amp;#39;], &amp;#39;loading&amp;#39;: [&amp;#39;加载中...&amp;#39;], &amp;#39;end&amp;#39;: [&amp;#39;结束&amp;#39;], &amp;#39;default&amp;#39;: [&amp;#39;网络异常&amp;#39;] } const checkStatus = (status) =&amp;gt; { let way = mode[status] || mode[&amp;#39;default&amp;#39;] console.</description>
+    </item>
+    
+    <item>
       <title>2019</title>
-      <link>http://blog.vovteam.com/post/test/</link>
+      <link>http://daheaths.github.io/test/</link>
       <pubDate>Mon, 31 Dec 2018 15:51:08 +0800</pubDate>
       
-      <guid>http://blog.vovteam.com/post/test/</guid>
-      <description> 新年快乐 </description>
+      <guid>http://daheaths.github.io/test/</guid>
+      <description>新年快乐 </description>
     </item>
     
     <item>
       <title>CSS filter / CSS 滤镜</title>
-      <link>http://blog.vovteam.com/post/public/</link>
+      <link>http://daheaths.github.io/public/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://blog.vovteam.com/post/public/</guid>
+      <guid>http://daheaths.github.io/public/</guid>
       <description>CSS filter  先通过1个案例开始   如上图效果， 新闻资讯网站。 例如: “国家公祭日” 会用到这种效果。（上图如有侵权，请联系作者）
  css filter 就像是浏览器版本的 Photoshop 滤镜！
  注意： filter 跟 IE上的 filter 是不同的作用！
- 有以下属性  blur() brightness() contrast() drop-shadow() grayscale() hue-rotate() invert() opacity() saturate() sepia() url() - for applying SVG filters custom() - 即将推出  编辑 HTML  &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt; &amp;lt;img src=&amp;quot;http://vovteam.com/background/background.jpg&amp;quot; alt=&amp;quot;express&amp;quot;&amp;gt; &amp;lt;/div&amp;gt;  filter: blur() blur() 将图像设置为高斯模糊, 默认值：0, 不可将值设置为 “百分比”
-.box { width: 600px; height: 00px; } img { width: 100%; height: 100%; filter: blur(2px); }  filter: brightness() 应用线性乘法器，使图像看起来更光亮或者更暗淡。值为 0%，图像是全黑。值为 100%，图像无变化。值超过100%, 图像的亮度更高。如果没有设定值，则默认为 100%</description>
+ 有以下属性  blur() brightness() contrast() drop-shadow() grayscale() hue-rotate() invert() opacity() saturate() sepia() url() - for applying SVG filters custom() - 即将推出 编辑 HTML  &amp;lt;div class=&amp;quot;box&amp;quot;&amp;gt; &amp;lt;img src=&amp;quot;http://vovteam.com/background/background.jpg&amp;quot; alt=&amp;quot;express&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; filter: blur() blur() 将图像设置为高斯模糊, 默认值：0, 不可将值设置为 “百分比”
+.box { width: 600px; height: 00px; } img { width: 100%; height: 100%; filter: blur(2px); } filter: brightness() 应用线性乘法器，使图像看起来更光亮或者更暗淡。值为 0%，图像是全黑。值为 100%，图像无变化。值超过100%, 图像的亮度更高。如果没有设定值，则默认为 100%</description>
     </item>
     
   </channel>

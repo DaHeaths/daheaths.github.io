@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    
+
+    
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans:400|Old+Standard+TT:400' rel='stylesheet' type='text/css'>
+    
+
+    <link rel="icon" type="image/png" href="http://daheaths.github.io/favicon_16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="http://daheaths.github.io/favicon_32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="http://daheaths.github.io/favicon_128x128.png" sizes="128x128">
+
+    <title>
+      
+      
+         动态划线效果 
+      
+    </title>
+    <link rel="canonical" href="http://daheaths.github.io/animated-highlight/">
+
+    <style>
+  * {
+    border:0;
+    font:inherit;
+    font-size:100%;
+    vertical-align:baseline;
+    margin:0;
+    padding:0;
+    color: black;
+    text-decoration-skip: ink;
+  }
+
+  body {
+    font-family:'Open Sans', 'Myriad Pro', Myriad, sans-serif;
+    font-size:17px;
+    line-height:160%;
+    color:#1d1313;
+    max-width:700px;
+    margin:auto;
+  }
+
+  p {
+    margin: 20px 0;
+  }
+
+  a img {
+    border:none;
+  }
+
+  img {
+    margin: 10px auto 10px auto;
+    max-width: 100%;
+    display: block;
+  }
+
+  .left-justify {
+    float: left;
+  }
+
+  .right-justify {
+    float:right;
+  }
+
+  pre, code {
+    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    background-color: #f7f7f7;
+  }
+
+  code {
+    font-size: 12px;
+    padding: 4px;
+  }
+
+  pre {
+    margin-top: 0;
+    margin-bottom: 16px;
+    word-wrap: normal;
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+  }
+
+  pre>code {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    word-break: normal;
+    white-space: pre;
+    background: transparent;
+    border: 0;
+  }
+
+  pre code {
+    display: inline;
+    max-width: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    line-height: inherit;
+    word-wrap: normal;
+    background-color: transparent;
+    border: 0;
+  }
+
+  pre code::before,
+  pre code::after {
+    content: normal;
+  }
+
+  em,q,em,dfn {
+    font-style:italic;
+  }
+
+  .sans,html .gist .gist-file .gist-meta {
+    font-family:"Open Sans","Myriad Pro",Myriad,sans-serif;
+  }
+
+  .mono,pre,code,tt,p code,li code {
+    font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace;
+  }
+
+  .heading,.serif,h1,h2,h3 {
+    font-family:"Old Standard TT",serif;
+  }
+
+  strong {
+    font-weight:600;
+  }
+
+  q:before {
+    content:"\201C";
+  }
+
+  q:after {
+    content:"\201D";
+  }
+
+  del,s {
+    text-decoration:line-through;
+  }
+
+  blockquote {
+    font-family:"Old Standard TT",serif;
+    text-align:center;
+    padding:50px;
+  }
+
+  blockquote p {
+    display:inline-block;
+    font-style:italic;
+  }
+
+  blockquote:before,blockquote:after {
+    font-family:"Old Standard TT",serif;
+    content:'\201C';
+    font-size:35px;
+    color:#403c3b;
+  }
+
+  blockquote:after {
+    content:'\201D';
+  }
+
+  hr {
+    width:40%;
+    height: 1px;
+    background:#403c3b;
+    margin: 25px auto;
+  }
+
+  h1 {
+    font-size:35px;
+  }
+
+  h2 {
+    font-size:28px;
+  }
+
+  h3 {
+    font-size:22px;
+    margin-top:18px;
+  }
+
+  h1 a,h2 a,h3 a {
+    text-decoration:none;
+  }
+
+  h1,h2 {
+    margin-top:28px;
+  }
+
+  #sub-header, time {
+    color:#403c3b;
+    font-size:13px;
+  }
+
+  #sub-header {
+    margin: 0 4px;
+  }
+
+  #nav h1 a {
+    font-size:35px;
+    color:#1d1313;
+    line-height:120%;
+  }
+
+  .posts_listing a,#nav a {
+    text-decoration: none;
+  }
+
+  li {
+    margin-left: 20px;
+  }
+
+  ul li {
+    margin-left: 5px;
+  }
+
+  ul li {
+    list-style-type: none;
+  }
+  ul li:before {
+    content:"\00BB \0020";
+  }
+
+  #nav ul li:before, .posts_listing li:before {
+    content:'';
+    margin-right:0;
+  }
+
+  #content {
+    text-align:left;
+    width:100%;
+    font-size:15px;
+    padding:60px 0 80px;
+  }
+
+  #content h1,#content h2 {
+    margin-bottom:5px;
+  }
+
+  #content h2 {
+    font-size:25px;
+  }
+
+  #content .entry-content {
+    margin-top:15px;
+  }
+
+  #content time {
+    margin-left:3px;
+  }
+
+  #content h1 {
+    font-size:30px;
+  }
+
+  .highlight {
+    margin: 10px 0;
+  }
+
+  .posts_listing {
+    margin:0 0 50px;
+  }
+
+  .posts_listing li {
+    margin:0 0 25px 15px;
+  }
+
+  .posts_listing li a:hover,#nav a:hover {
+    text-decoration: underline;
+  }
+
+  #nav {
+    text-align:center;
+    position:static;
+    margin-top:60px;
+  }
+
+  #nav ul {
+    display: table;
+    margin: 8px auto 0 auto;
+  }
+
+  #nav li {
+    list-style-type:none;
+    display:table-cell;
+    font-size:15px;
+    padding: 0 20px;
+  }
+
+  #links {
+    margin: 50px 0 0 0;
+  }
+
+  #links :nth-child(2) {
+    float:right;
+  }
+
+  #not-found {
+    text-align: center;
+  }
+
+  #not-found a {
+    font-family:"Old Standard TT",serif;
+    font-size: 200px;
+    text-decoration: none;
+    display: inline-block;
+    padding-top: 225px;
+  }
+
+  @media (max-width: 750px) {
+    body {
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    #nav h1 a {
+      font-size:28px;
+    }
+
+    #nav li {
+      font-size:13px;
+      padding: 0 15px;
+    }
+
+    #content {
+      margin-top:0;
+      padding-top:50px;
+      font-size:14px;
+    }
+
+    #content h1 {
+      font-size:25px;
+    }
+
+    #content h2 {
+      font-size:22px;
+    }
+
+    .posts_listing li div {
+      font-size:12px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    body {
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    #nav h1 a {
+      font-size:22px;
+    }
+
+    #nav li {
+      font-size:12px;
+      padding: 0 10px;
+    }
+
+    #content {
+      margin-top:0;
+      padding-top:20px;
+      font-size:12px;
+    }
+
+    #content h1 {
+      font-size:20px;
+    }
+
+    #content h2 {
+      font-size:18px;
+    }
+
+    .posts_listing li div{
+      font-size:12px;
+    }
+  }
+</style>
+
+
+    
+  </head>
+
+  <body>
+    <section id=nav>
+      <h1><a href="http://daheaths.github.io/">愤怒的牛仔</a></h1>
+      <ul>
+        
+          <li><a href="#ZgotmplZ">不念过去，不畏将来</a></li>
+        
+      </ul>
+    </section>
+
+
+<section id=content>
+  <h1> 动态划线效果 </h1>
+
+  
+    <div id=sub-header>
+      August 2020 · 1 minute read
+    </div>
+  
+
+  <div class="entry-content">
+    <p><a href="https://imgchr.com/i/aUDc6g"><img src="https://s1.ax1x.com/2020/08/03/aUDc6g.md.png" alt="aUDc6g.md.png"></a></p>
+<h3 id="html">html</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="">&lt;!DOCTYPE html&gt;</span>
+&lt;<span style="font-weight:bold">html</span> lang=<span style="font-style:italic">&#34;en&#34;</span>&gt;
+&lt;<span style="font-weight:bold">head</span>&gt;
+    &lt;<span style="font-weight:bold">meta</span> charset=<span style="font-style:italic">&#34;UTF-8&#34;</span>&gt;
+    &lt;<span style="font-weight:bold">meta</span> name=<span style="font-style:italic">&#34;viewport&#34;</span> content=<span style="font-style:italic">&#34;width=device-width, initial-scale=1.0&#34;</span>&gt;
+    &lt;<span style="font-weight:bold">title</span>&gt;动态划线效果&lt;/<span style="font-weight:bold">title</span>&gt;
+&lt;/<span style="font-weight:bold">head</span>&gt;
+&lt;<span style="font-weight:bold">body</span>&gt;
+    &lt;<span style="font-weight:bold">h1</span>&gt;JavaScript 简史&lt;/<span style="font-weight:bold">h1</span>&gt;
+    &lt;<span style="font-weight:bold">p</span>&gt;
+        JavaScript诞生于&lt;<span style="font-weight:bold">mark</span>&gt;1995年&lt;/<span style="font-weight:bold">mark</span>&gt;。当时，它的主要目的是处理以前由服务器端语言
+        （如Perl）负责的一些输入验证操作。在JavaScript问世之前，
+        必须把表单数据发送到服务器端才能确定用户是否没有填写某个必填域，
+        是否输入了无效的值。&lt;<span style="font-weight:bold">mark</span>&gt;Netscape Navigator&lt;/<span style="font-weight:bold">mark</span>&gt;希望通过JavaScript来解决这个问题。
+        在人们普遍使用电话拔号上网的年代，能够在客户端完成一些基本的验证任务绝对是令人兴奋的。
+        毕竟，拨号上网的速度之慢，导致了与服务器的每一次数据交换事实上都成了对人们耐心的一次考验。
+        自此以后，JavaScript逐渐成为市面上常见浏览器必备的一项特色功能。
+        如今，JavaScript的用途早已不再局限于简单的数据验证，
+        而是具备了与浏览器窗口及其内容等几乎所有方面交互的能力。
+        今天的JavaScript已经成为一门功能全面的编程语言，能够处理复杂的计算和交互，
+        &lt;<span style="font-weight:bold">mark</span>&gt;拥有了闭包、匿名（lambda，拉姆达）函数，甚至元编程等特性。作为Web的一个重要组成部分&lt;/<span style="font-weight:bold">mark</span>&gt;。 
+    &lt;/<span style="font-weight:bold">p</span>&gt;
+    &lt;<span style="font-weight:bold">p</span>&gt;
+        JavaScript的重要性是不言而喻的，就连手机浏览器，甚至那些专为残障人士设计的浏览器等非常规浏览器都支持它。
+        当然，微软的例子更为典型。虽然有自己的客户端脚本语言&lt;<span style="font-weight:bold">mark</span>&gt;VBScript&lt;/<span style="font-weight:bold">mark</span>&gt;，
+        但微软仍然在&lt;<span style="font-weight:bold">mark</span>&gt;InternetExplorer&lt;/<span style="font-weight:bold">mark</span>&gt;的早期版本中加入了自己的JavaScript实现。
+    &lt;/<span style="font-weight:bold">p</span>&gt;
+    &lt;<span style="font-weight:bold">p</span>&gt;
+        JavaScript&lt;<span style="font-weight:bold">mark</span>&gt;从一个简单的输入验证器发展成为一门强大的编程语言，
+        完全出乎人们的意料。&lt;/<span style="font-weight:bold">mark</span>&gt;应该说，它既是一门非常简单的语
+        言，又是一门非常复杂的语言。说它简单，是因为学会使用它只需片刻功夫；
+        而说它复杂，是因为要真正掌握它则需要数年时间。
+        要想全面理解和掌握JavaScript，关键在于弄清楚它的本质、历史和局限性。
+    &lt;/<span style="font-weight:bold">p</span>&gt;
+&lt;/<span style="font-weight:bold">body</span>&gt;
+&lt;/<span style="font-weight:bold">html</span>&gt;
+</code></pre></div><h3 id="css">CSS</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">&lt;<span style="font-weight:bold">style</span>&gt;
+    <span style="font-weight:bold">html</span> {
+        <span style="font-weight:bold">font-size</span>: 12<span style="">px</span>;
+    }
+
+    <span style="font-weight:bold">body</span> {
+        <span style="font-weight:bold">font-family</span>: Helvetica;
+        <span style="font-weight:bold">color</span>: #333;
+        <span style="font-weight:bold">width</span>: 60<span style="">%</span>;
+        <span style="font-weight:bold">margin</span>: <span style="font-weight:bold">auto</span>;
+    }
+
+    <span style="font-weight:bold">h1</span> {
+        <span style="font-weight:bold">font-size</span>: 4<span style="">rem</span>;
+        <span style="font-weight:bold">margin</span>: 10<span style="">rem</span> 0 3<span style="">rem</span> 0;
+    }
+
+    <span style="font-weight:bold">p</span> {
+        <span style="font-weight:bold">font-size</span>: 2<span style="">rem</span>;
+        <span style="font-weight:bold">line-height</span>: 3.8<span style="">rem</span>;
+        <span style="font-weight:bold">margin</span>: 2.6<span style="">rem</span> 0;
+        <span style="font-weight:bold">letter-spacing</span>: .05<span style="">rem</span>;
+        <span style="font-weight:bold">background</span>: #ddd;
+        <span style="font-weight:bold">padding</span>: 2<span style="">rem</span>;
+        <span style="font-weight:bold">border-radius</span>: 1<span style="">rem</span>;
+    }
+    <span style="font-style:italic">/* 关键代码 start */</span> 
+    <span style="font-weight:bold">mark</span> {
+        <span style="font-weight:bold">background-color</span>: <span style="font-weight:bold">transparent</span>;
+        <span style="font-weight:bold">color</span>: <span style="font-weight:bold">inherit</span>;
+        <span style="font-weight:bold">background-image</span>: linear-gradient(#73FFA0, #73FFA0);
+        <span style="font-weight:bold">background-repeat</span>: <span style="font-weight:bold">no-repeat</span>;
+        <span style="font-weight:bold">background-size</span>: 0<span style="">%</span> 38<span style="">%</span>;
+        <span style="font-weight:bold">background-position</span>: 0 100<span style="">%</span>;
+    }
+
+    <span style="font-weight:bold">mark</span>.<span style="font-weight:bold">animate</span> {
+        <span style="font-weight:bold">animation</span>: 2<span style="">s</span> highlight <span style="font-weight:bold">ease</span>-in-out <span style="font-weight:bold">forwards</span>;
+    }
+
+    @<span style="font-weight:bold">keyframes</span> <span style="font-weight:bold">highlight</span> {
+        <span style="font-weight:bold">to</span> {
+            <span style="font-weight:bold">background-size</span>: 100<span style="">%</span> 38<span style="">%</span>;
+        }
+    }
+    <span style="font-style:italic">/* 关键代码 end */</span> 
+&lt;/<span style="font-weight:bold">style</span>&gt;
+</code></pre></div><h3 id="javascript">JavaScript</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">let</span> observer = <span style="font-weight:bold">new</span> IntersectionObserver((entries, observer) =&gt; {
+  entries.forEach(entry =&gt; {
+    <span style="font-weight:bold">if</span> (entry.isIntersecting) {
+      entry.target.classList.add(<span style="font-style:italic">&#39;animate&#39;</span>)
+      observer.unobserve(entry.target)
+    }
+  })
+})
+
+document.querySelectorAll(<span style="font-style:italic">&#39;mark&#39;</span>).forEach(mark =&gt; {
+  observer.observe(mark)
+})
+</code></pre></div>
+  </div>
+
+  <div id=links>
+    
+      <a class="basic-alignment left" href="http://daheaths.github.io/2019-06-09-judge/">&laquo; 判断策略</a>
+    
+    
+  </div>
+</section>
+
+  
+</body>
+</html>
+
+
+
